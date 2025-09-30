@@ -1,4 +1,25 @@
-const trackerChecks = [
+const fields = [
+    '../fields/SRFC.png',
+    '../fields/GUID.png',
+    '../fields/ILSN.png',
+    '../fields/MAUS.png',
+    '../fields/GRYD.png',
+    '../fields/SUN.png',
+    '../fields/MOON.png',
+    '../fields/SPRG.png',
+    '../fields/GDSS.png',
+    '../fields/INFR.png',
+    '../fields/RUIN.png',
+    '../fields/EXTN.png',
+    '../fields/BRTH.png',
+    '../fields/TWIN.png',
+    '../fields/ENDL.png',
+    '../fields/DMNS.png',
+    '../fields/MOM.png',
+    '../fields/MOM+.png',
+    '../fields/HELL.png',
+]
+window.trackerChecks = [
     { key: "whip", steps: ["../sprites/whip1.png", "../sprites/whip2.png", "../sprites/whip3.png"], type: "step", title: "Whip" },
     { key: "knife", image: "../sprites/knife.png", type: "toggle", title: "Knife" },
     { key: "ksword", image: "../sprites/ksword.png", type: "toggle", title: "Key Sword" },
@@ -81,6 +102,10 @@ const trackerChecks = [
     { key: "palenque", image: "../sprites/Palenque.png", type: "toggle", title: "Palenque" },
     { key: "baphomet", image: "../sprites/baphomet.png", type: "toggle", title: "Baphomet" },
     { key: "tiamat", image: "../sprites/tiamat.png", type: "toggle", title: "Tiamat" },
+    { key: "cursed1", steps: fields, type: "step", title: "Cursed Chest 1" },
+    { key: "cursed2", steps: fields, type: "step", title: "Cursed Chest 2" },
+    { key: "cursed3", steps: fields, type: "step", title: "Cursed Chest 3" },
+    { key: "cursed4", steps: fields, type: "step", title: "Cursed Chest 4" },
 ];
 
 function initializeTrackerChecksFromLocalstorage() {
