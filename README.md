@@ -1,5 +1,5 @@
 # la-mulana-web-tracker
-A web-based tracker for La Mulana Randomizer by ZoeVermilion.
+A web-based tracker for La Mulana Randomizer by ZoeVermilion, with the `/beta` version updated significantly by nihonjinrxs.
 
 This tracker is meant to be an alternative to the Windows-only auto-tracker for use on any operating system via your web browser.
 
