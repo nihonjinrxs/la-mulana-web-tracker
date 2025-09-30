@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en">
+<html><header><title>LMR Tracker - Generate Fields</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="scripts/lmr-tracker-storage.js"></script>
+	<script src="scripts/tracker-checks.js"></script>
+	<script src="scripts/display-utils.js"></script>
+	<script src="scripts/main.js"></script>
+</header>
+<body class="body" style="background-color:black;" onload="">
+
+<select name="field" id="field" onchange="generateCanvasImage()">
+    <option value=" ? ">None</option>
+    <option value="SRFC">Surface</option>
+    <option value="GUID">Gate of Guidance</option>
+    <option value="MAUS">Mausoleum of Giants</option>
+    <option value="SUN">Temple of the Sun</option>
+    <option value="MOON">Temple of Moonlight</option>
+    <option value="SPRG">Spring in the Sky</option>
+    <option value="INFR">Inferno Cavern</option>
+    <option value="BRTH">Chamber of Birth</option>
+    <option value="ENDL">Endless Corridor</option>
+    <option value="TWIN">Twin Labyrinth</option>
+    <option value="GDSS">Tower of the Goddess</option>
+    <option value="EXTN">Chamber of Extinction</option>
+    <option value="GRYD">Graveryard of Giants</option>
+    <option value="ILSN">Gate of Illusion</option>
+    <option value="MOM">Shrine of the Mother</option>
+    <option value="RUIN">Tower of Ruin</option>
+    <option value="DMNS">Dimensional Corridor</option>
+    <option value="MOM+">True Shrine of the Mother</option>
+    <option value="TIME">Gate of Time</option>
+    <option value="HELL">Hell Temple</option>
+</select>
+
+<canvas id="myCanvas" width="40" height="40" style="border:1px solid rgb(53, 5, 53);"></canvas>
+
+<button onclick="saveCanvasAsPNG()">Save as PNG</button>
+
+<script>
+window.cvs = document.getElementById('myCanvas');
+window.ctx = cvs.getContext('2d');
+
+function generateCanvasImage() {
+    const text = document.getElementById('field').value;
+    ctx.fillStyle = 'rgb(106, 161, 243)';
+    ctx.fillRect(0, 0, 40, 40);
+    ctx.font = '14px monospace';
+    ctx.fillStyle = 'rgb(53, 5, 53)';
+    ctx.fillText(text, text.length == 4 ? 3 : 7, 25);
+}
+
+function saveCanvasAsPNG() {
+    const dataURL = cvs.toDataURL('image/png');
+    const fieldName = document.getElementById('field').value;
+
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = fieldName + '.png';
+    link.click();
+}
+</script>
+
+</body>
+</html>
