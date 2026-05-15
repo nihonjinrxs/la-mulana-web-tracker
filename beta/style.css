@@ -45,6 +45,11 @@ img{
 	opacity: 0.5;
 	filter: grayscale(100%);
 }
+.check_count_header {
+	clip-path: rect(8px auto 22px auto);
+	width: 30px;
+	height: 30px;
+}
 .container {
 	position: relative;
 	width: 30px;
@@ -90,15 +95,20 @@ img{
 .tracker {
 	display: grid;
 	align-items: start;
-	grid-auto-flow: column;
+	grid-auto-flow: row;
 	min-width: 500px;
 	max-width: 500px;
 	min-height: 350px;
-	max-height: 390px;
+	max-height: 450px;
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-bottom: 10px;
 	border: 2px solid darkred;
+}
+.pane_collection {
+	display: grid;
+	align-items: start;
+	grid-auto-flow: column;
 }
 .pane {
 	display: grid;

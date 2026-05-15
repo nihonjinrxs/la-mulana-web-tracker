@@ -56,20 +56,21 @@ const trackerStorage = {
         this.setItem(key, 'step', tracked);
         return tracked;
     },
-    trackCounter: function(key, image, maxVal) {
+    trackCounter: function(key, image, maxVal, decrement) {
         const tracked = {
             type: 'counter',
-            value: 0,
+            value: decrement ? maxVal : 0,
             max: maxVal,
             atMin: true,
             atMax: false,
+            decrement: decrement || false,
             image,
         };
         this.setItem(key, 'counter', tracked);
     },
-    getOrInitializeCounter(key, image, maxVal) {
+    getOrInitializeCounter(key, image, maxVal, decrement) {
         const existing = this.getItem(key, 'counter');
-        if (!existing) { this.trackCounter(key, image, maxVal); }
+        if (!existing) { this.trackCounter(key, image, maxVal, decrement); }
     },
     increment: function(key) {
         const tracked = this.getItem(key, 'counter');
@@ -108,7 +109,7 @@ const trackerStorage = {
                     this.trackStepItem(key, tracked.steps);
                     break;
                 case 'counter':
-                    this.trackCounter(key, tracked.image, tracked.max);
+                    this.trackCounter(key, tracked.image, tracked.max, tracked.decrement);
                     break;
             }
         }

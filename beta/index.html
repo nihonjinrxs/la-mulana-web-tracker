@@ -1,187 +1,309 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html lang="en">
-<html><header><title>LMR Tracker</title>
+<html>
+<header>
+	<title>LMR Tracker</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="scripts/lmr-tracker-storage.js"></script>
 	<script src="scripts/tracker-checks.js"></script>
 	<script src="scripts/display-utils.js"></script>
 	<script src="scripts/main.js"></script>
 </header>
+
 <body class="body" onload="">
 	<div class="tracker" id="tracker">
-		<div class="pane left_pane">
-			<div class="segment main_weapon">
-				<h2 class="segment_title">MAIN WEAPON</h2> 						
-				<div class="segment_content">
-					<img id="whip" class="item" src="../sprites/whip1.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Whip">
-					<img id="knife" class="item" src="../sprites/knife.png" onClick="toggleItem(event)" title="Knife">
-					<img id="ksword" class="item" src="../sprites/ksword.png" onClick="toggleItem(event)" title="Key Sword">
-					<img id="axe" class="item" src="../sprites/axe.png" onClick="toggleItem(event)" title="Axe">
-					<img id="katana" class="item" src="../sprites/katana.png" onClick="toggleItem(event)" title="Katana">
+		<div class="pane_collection">
+			<div class="pane left_pane">
+				<div class="segment main_weapon">
+					<h2 class="segment_title">MAIN WEAPON</h2>
+					<div class="segment_content">
+						<img id="whip" class="item" src="../sprites/whip1.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Whip">
+						<img id="knife" class="item" src="../sprites/knife.png" onClick="toggleItem(event)"
+							title="Knife">
+						<img id="ksword" class="item" src="../sprites/ksword.png" onClick="toggleItem(event)"
+							title="Key Sword">
+						<img id="axe" class="item" src="../sprites/axe.png" onClick="toggleItem(event)" title="Axe">
+						<img id="katana" class="item" src="../sprites/katana.png" onClick="toggleItem(event)"
+							title="Katana">
+					</div>
+				</div>
+				<div class="segment sub_weapon">
+					<h2 class="segment_title">SUB WEAPON</h2>
+					<div class="segment_content">
+						<img id="shuriken" class="item" src="../sprites/shuriken.png" onClick="toggleItem(event)"
+							title="Shuriken">
+						<img id="rshuriken" class="item" src="../sprites/rshuriken.png" onClick="toggleItem(event)"
+							title="Rolling Shuriken">
+						<img id="espear" class="item" src="../sprites/earthspear.png" onClick="toggleItem(event)"
+							title="Earth Spear">
+						<img id="flaregun" class="item" src="../sprites/flaregun.png" onClick="toggleItem(event)"
+							title="Flare Gun">
+						<img id="bomb" class="item" src="../sprites/bomb.png" onClick="toggleItem(event)" title="Bomb">
+						<img id="chakram" class="item" src="../sprites/chakram.png" onClick="toggleItem(event)"
+							title="Chakram">
+						<img id="caltrops" class="item" src="../sprites/caltrops.png" onClick="toggleItem(event)"
+							title="Caltrops">
+						<img id="pistol" class="item" src="../sprites/pistol.png" onClick="toggleItem(event)"
+							title="Pistol">
+						<img id="shield" class="item" src="../sprites/buckler.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Shield">
+					</div>
+				</div>
+				<div class="segment usable_items">
+					<h2 class="segment_title">USABLE ITEMS</h2>
+					<div class="segment_content">
+						<img id="handscan" class="item" src="../sprites/handscan.png" onClick="toggleItem(event)"
+							title="Hand Scanner">
+						<img id="djedpillar" class="item" src="../sprites/djed.png" onClick="toggleItem(event)"
+							title="Djed Pillar">
+						<img id="minidoll" class="item" src="../sprites/minidoll.png" onClick="toggleItem(event)"
+							title="Mini Doll">
+						<img id="megatama" class="item" src="../sprites/megatama.png" onClick="toggleItem(event)"
+							title="Jade Magatama">
+						<img id="soulcog" class="item" src="../sprites/soulcog.png" onClick="toggleItem(event)"
+							title="Cog of the Soul">
+						<img id="timelamp" class="item" src="../sprites/timelamp.png" onClick="toggleItem(event)"
+							title="Lamp of Time">
+						<img id="pochette" class="item" src="../sprites/pochettekey.png" onClick="toggleItem(event)"
+							title="Pochette Key">
+						<img id="dragonbone" class="item" src="../sprites/dragonbone.png" onClick="toggleItem(event)"
+							title="Dragon Bone">
+						<img id="cskull" class="item" src="../sprites/cskull.png" onClick="toggleItem(event)"
+							title="Crystal Skull">
+						<img id="vessel" class="item" src="../sprites/vessel.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Vessel">
+						<img id="pepper" class="item" src="../sprites/pepper.png" onClick="toggleItem(event)"
+							title="Pepper">
+						<img id="wmstatue" class="item" src="../sprites/wmstatue.png" onClick="toggleItem(event)"
+							title="Woman Statue/Maternity Statue">
+						<img id="eternitykey" class="item" src="../sprites/eternitykey.png" onClick="toggleItem(event)"
+							title="Key of Eternity">
+						<img id="sstaff" class="item" src="../sprites/sstaff.png" onClick="toggleItem(event)"
+							title="Serpent Staff">
+						<img id="mtalisman" class="item" src="../sprites/diary.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Mulana Talisman">
+					</div>
+				</div>
+				<div class="segment cursed_chests">
+					<h2 class="segment_title">CURSED CHESTS</h2>
+					<div class="segment_content">
+						<img id="cursed1" class="item" src="../fields/NONE.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 1">
+						<img id="cursed2" class="item" src="../fields/NONE.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 2">
+						<img id="cursed3" class="item" src="../fields/NONE.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 3">
+						<img id="cursed4" class="item" src="../fields/NONE.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 4">
+					</div>
 				</div>
 			</div>
-			<div class="segment sub_weapon">
-				<h2 class="segment_title">SUB WEAPON</h2>
-				<div class="segment_content">
-					<img id="shuriken" class="item" src="../sprites/shuriken.png" onClick="toggleItem(event)" title="Shuriken">
-					<img id="rshuriken" class="item" src="../sprites/rshuriken.png" onClick="toggleItem(event)" title="Rolling Shuriken">
-					<img id="espear" class="item" src="../sprites/earthspear.png" onClick="toggleItem(event)" title="Earth Spear">
-					<img id="flaregun" class="item" src="../sprites/flaregun.png" onClick="toggleItem(event)" title="Flare Gun">
-					<img id="bomb" class="item" src="../sprites/bomb.png" onClick="toggleItem(event)" title="Bomb">
-					<img id="chakram" class="item" src="../sprites/chakram.png" onClick="toggleItem(event)" title="Chakram">
-					<img id="caltrops" class="item" src="../sprites/caltrops.png" onClick="toggleItem(event)" title="Caltrops">
-					<img id="pistol" class="item" src="../sprites/pistol.png" onClick="toggleItem(event)" title="Pistol">
-					<img id="shield" class="item" src="../sprites/buckler.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Shield">
+			<div class="pane right_pane">
+				<div class="segment items">
+					<h2 class="segment_title">ITEMS</h2>
+					<div class="segment_content">
+						<img id="superx2" class="item" src="../sprites/superx2.png" onClick="toggleItem(event)"
+							title="Moble Super X2">
+						<img id="shrinechecks" class="item" src="../sprites/shrine.png"
+							title="Remove Walls from Shrine of the Mother">
+						<img id="shrinemap" class="item" src="../sprites/map.png" onClick="toggleItem(event)"
+							title="Map (Shrine of the Mother)">
+						<div></div>
+						<img id="glove" class="item" src="../sprites/glove.png" onClick="toggleItem(event)"
+							title="Glove">
+						<img id="grail" class="item" src="../sprites/grail.png" onClick="toggleItem(event)"
+							title="Holy Grail">
+						<img id="isispendant" class="item" src="../sprites/isipendant.png" onClick="toggleItem(event)"
+							title="Isis' Pendant">
+						<img id="crucifix" class="item" src="../sprites/crucifix.png" onClick="toggleItem(event)"
+							title="Crucifix">
+						<img id="helmet" class="item" src="../sprites/helmet.png" onClick="toggleItem(event)"
+							title="Helmet">
+						<img id="grappleclaw" class="item" src="../sprites/grappleclaw.png" onClick="toggleItem(event)"
+							title="Grapple Claw">
+						<img id="bmirror" class="item" src="../sprites/bmirror.png" onClick="toggleItem(event)"
+							title="Bronze Mirror">
+						<img id="trutheye" class="item" src="../sprites/trutheye.png" onClick="toggleItem(event)"
+							title="Eye of Truth">
+						<img id="scalesphere" class="item" src="../sprites/scalesphere.png" onClick="toggleItem(event)"
+							title="Scalesphere">
+						<img id="ring" class="item" src="../sprites/ring.png" onClick="toggleItem(event)" title="Ring">
+						<img id="gauntlet" class="item" src="../sprites/gauntlet.png" onClick="toggleItem(event)"
+							title="Gauntlet">
+						<img id="anchor" class="item" src="../sprites/treasures.png" onClick="stepItem(event)"
+							oncontextmenu="unStepItem(event); return false;" title="Treasures/Anchor">
+						<img id="plane" class="item" src="../sprites/plane.png" onClick="toggleItem(event)"
+							title="Golden Plane">
+						<img id="ocarina" class="item" src="../sprites/ocarina.png" onClick="toggleItem(event)"
+							title="Philospher's Ocarina">
+						<img id="feather" class="item" src="../sprites/feather.png" onClick="toggleItem(event)"
+							title="Feather">
+						<img id="bookdead" class="item" src="../sprites/bookdead.png" onClick="toggleItem(event)"
+							title="Book of the Dead">
+						<img id="fclothes" class="item" src="../sprites/fclothes.png" onClick="toggleItem(event)"
+							title="Fairy Clothes">
+						<img id="scriptures" class="item" src="../sprites/scriptures.png" onClick="toggleItem(event)"
+							title="Scriptures">
+						<img id="hboots" class="item" src="../sprites/hboots.png" onClick="toggleItem(event)"
+							title="Hermes' Boots">
+						<img id="edenfruit" class="item" src="../sprites/edenfruit.png" onClick="toggleItem(event)"
+							title="Fruit of Eden">
+						<img id="twinstatue" class="item" src="../sprites/twinstatue.png" onClick="toggleItem(event)"
+							title="Twin Statue">
+						<img id="bracelet" class="item" src="../sprites/bracelet.png" onClick="toggleItem(event)"
+							title="Bracelet">
+						<img id="perfume" class="item" src="../sprites/perfume.png" onClick="toggleItem(event)"
+							title="Perfume">
+						<img id="spaulder" class="item" src="../sprites/spaulder.png" onClick="toggleItem(event)"
+							title="Spaulder">
+						<img id="dimenkey" class="item" src="../sprites/dimenkey.png" onClick="toggleItem(event)"
+							title="Dimensional Key">
+						<img id="icecape" class="item" src="../sprites/icecape.png" onClick="toggleItem(event)"
+							title="Ice Cape">
+					</div>
+				</div>
+				<div class="segment software">
+					<h2 class="segment_title">SOFTWARE</h2>
+					<div class="segment_content">
+						<img id="reader" class="item" src="../sprites/reader.png" onClick="toggleItem(event)"
+							title="reader.exe">
+						<img id="yagomap" class="item" src="../sprites/yagomap.png" onClick="toggleItem(event)"
+							title="yagomap.exe">
+						<img id="yagostr" class="item" src="../sprites/yagostr.png" onClick="toggleItem(event)"
+							title="yagostr.exe">
+						<img id="torude" class="item" src="../sprites/torude.png" onClick="toggleItem(event)"
+							title="torude.exe">
+						<img id="mantra" class="item" src="../sprites/mantra.png" onClick="toggleItem(event)"
+							title="mantra.exe">
+						<img id="mekuri" class="item" src="../sprites/mekuri.png" onClick="toggleItem(event)"
+							title="mekuri.exe">
+						<img id="miracle" class="item" src="../sprites/miracle.png" onClick="toggleItem(event)"
+							title="miracle.exe">
+						<img id="mirai" class="item" src="../sprites/mirai.png" onClick="toggleItem(event)"
+							title="mirai.exe">
+						<div></div>
+						<img id="keyfairy" class="item" src="../sprites/keyfairy.png"
+							title="Consistent Key Fairy Access">
+					</div>
 				</div>
 			</div>
-			<div class="segment usable_items">
-				<h2 class="segment_title">USABLE ITEMS</h2>
-				<div class="segment_content">
-					<img id="handscan" class="item" src="../sprites/handscan.png" onClick="toggleItem(event)" title="Hand Scanner">
-					<img id="djedpillar" class="item" src="../sprites/djed.png" onClick="toggleItem(event)" title="Djed Pillar">
-					<img id="minidoll" class="item" src="../sprites/minidoll.png" onClick="toggleItem(event)" title="Mini Doll">
-					<img id="megatama" class="item" src="../sprites/megatama.png" onClick="toggleItem(event)" title="Jade Magatama">
-					<img id="soulcog" class="item" src="../sprites/soulcog.png" onClick="toggleItem(event)" title="Cog of the Soul">
-					<img id="timelamp" class="item" src="../sprites/timelamp.png" onClick="toggleItem(event)" title="Lamp of Time">
-					<img id="pochette" class="item" src="../sprites/pochettekey.png" onClick="toggleItem(event)" title="Pochette Key">
-					<img id="dragonbone" class="item" src="../sprites/dragonbone.png" onClick="toggleItem(event)" title="Dragon Bone">
-					<img id="cskull" class="item" src="../sprites/cskull.png" onClick="toggleItem(event)" title="Crystal Skull">
-					<img id="vessel" class="item" src="../sprites/vessel.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Vessel">
-					<img id="pepper" class="item" src="../sprites/pepper.png" onClick="toggleItem(event)" title="Pepper">
-					<img id="wmstatue" class="item" src="../sprites/wmstatue.png" onClick="toggleItem(event)" title="Woman Statue/Maternity Statue">
-					<img id="eternitykey" class="item" src="../sprites/eternitykey.png" onClick="toggleItem(event)" title="Key of Eternity">
-					<img id="sstaff" class="item" src="../sprites/sstaff.png" onClick="toggleItem(event)" title="Serpent Staff">
-					<img id="mtalisman" class="item" src="../sprites/diary.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Mulana Talisman">
+			<div class="pane vertical">
+				<div class="segment seals">
+					<h2 class="segment_title">SEAL</h2>
+					<div class="segment_content">
+						<img id="sealorigin" class="item" src="../sprites/sealorigin.png" onClick="toggleItem(event)"
+							title="Origin Seal">
+						<img id="sealbirth" class="item" src="../sprites/sealbirth.png" onClick="toggleItem(event)"
+							title="Birth Seal">
+						<img id="seallife" class="item" src="../sprites/seallife.png" onClick="toggleItem(event)"
+							title="Life Seal">
+						<img id="sealdeath" class="item" src="../sprites/sealdeath.png" onClick="toggleItem(event)"
+							title="Death Seal">
+					</div>
+				</div>
+				<div class="segment collectables">
+					<h2 class="segment_title">COLL</h2>
+					<div class="segment_content">
+						<div id="map" class="container" onClick="incCounter(event)"
+							oncontextmenu="decCounter(event); return false;" title="Maps"><img id="mapImage"
+								class="item" src="../sprites/map.png">
+							<div class="overlay" id="mapCounter">0</div>
+						</div>
+						<div id="ankh" class="container" onClick="incCounter(event)"
+							oncontextmenu="decCounter(event); return false;" title="Ankh Jewels"><img id="ankhImage"
+								class="item" src="../sprites/ankh.png">
+							<div class="overlay" id="ankhCounter">0</div>
+						</div>
+						<div id="orb" class="container" onClick="incCounter(event)"
+							oncontextmenu="decCounter(event); return false;" title="Sacred Orbs"><img id="orbImage"
+								class="item" src="../sprites/orb.png">
+							<div class="overlay" id="orbCounter">0</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="segment cursed_chests">
-				<h2 class="segment_title">CURSED CHESTS</h2>
+			<div class="pane vertical">
+				<h2 class="segment_title">BOSS</h2>
 				<div class="segment_content">
-					<img id="cursed1" class="item" src="../fields/NONE.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 1">
-					<img id="cursed2" class="item" src="../fields/NONE.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 2">
-					<img id="cursed3" class="item" src="../fields/NONE.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 3">
-					<img id="cursed4" class="item" src="../fields/NONE.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Cursed Chest 4">
+					<img id="amphisbaena" class="item" src="../sprites/Amphi.png" onClick="toggleItem(event)"
+						title="Amphisbaena">
+					<img id="sakit" class="item" src="../sprites/Sakit.png" onClick="toggleItem(event)" title="Sakit">
+					<img id="ellmac" class="item" src="../sprites/ellmac.png" onClick="toggleItem(event)"
+						title="Ellmac">
+					<img id="bahamut" class="item" src="../sprites/bahamut.png" onClick="toggleItem(event)"
+						title="Bahamut">
+					<img id="viy" class="item" src="../sprites/Viy.png" onClick="toggleItem(event)" title="Viy">
+					<img id="palenque" class="item" src="../sprites/Palenque.png" onClick="toggleItem(event)"
+						title="Palenque">
+					<img id="baphomet" class="item" src="../sprites/baphomet.png" onClick="toggleItem(event)"
+						title="Baphomet">
+					<img id="tiamat" class="item" src="../sprites/tiamat.png" onClick="toggleItem(event)"
+						title="Tiamat">
 				</div>
 			</div>
 		</div>
-		<div class="pane right_pane">
-			<div class="segment items">
-				<h2 class="segment_title">ITEMS</h2>
-				<div class="segment_content">
-					<img id="superx2" class="item" src="../sprites/superx2.png" onClick="toggleItem(event)" title="Moble Super X2">
-					<img id="shrinechecks" class="item" src="../sprites/shrine.png" title="Remove Walls from Shrine of the Mother">
-					<img id="shrinemap" class="item" src="../sprites/map.png" onClick="toggleItem(event)" title="Map (Shrine of the Mother)">
-					<div></div>
-					<img id="glove" class="item" src="../sprites/glove.png" onClick="toggleItem(event)" title="Glove">
-					<img id="grail" class="item" src="../sprites/grail.png" onClick="toggleItem(event)" title="Holy Grail">
-					<img id="isispendant" class="item" src="../sprites/isipendant.png" onClick="toggleItem(event)" title="Isis' Pendant">
-					<img id="crucifix" class="item" src="../sprites/crucifix.png" onClick="toggleItem(event)" title="Crucifix">
-					<img id="helmet" class="item" src="../sprites/helmet.png" onClick="toggleItem(event)" title="Helmet">
-					<img id="grappleclaw" class="item" src="../sprites/grappleclaw.png" onClick="toggleItem(event)" title="Grapple Claw">
-					<img id="bmirror" class="item" src="../sprites/bmirror.png" onClick="toggleItem(event)" title="Bronze Mirror">
-					<img id="trutheye" class="item" src="../sprites/trutheye.png" onClick="toggleItem(event)" title="Eye of Truth">
-					<img id="scalesphere" class="item" src="../sprites/scalesphere.png" onClick="toggleItem(event)" title="Scalesphere">
-					<img id="ring" class="item" src="../sprites/ring.png" onClick="toggleItem(event)" title="Ring">
-					<img id="gauntlet" class="item" src="../sprites/gauntlet.png" onClick="toggleItem(event)" title="Gauntlet">
-					<img id="anchor" class="item" src="../sprites/treasures.png" onClick="stepItem(event)" oncontextmenu="unStepItem(event); return false;" title="Treasures/Anchor">
-					<img id="plane" class="item" src="../sprites/plane.png" onClick="toggleItem(event)" title="Golden Plane">
-					<img id="ocarina" class="item" src="../sprites/ocarina.png" onClick="toggleItem(event)" title="Philospher's Ocarina">
-					<img id="feather" class="item" src="../sprites/feather.png" onClick="toggleItem(event)" title="Feather">
-					<img id="bookdead" class="item" src="../sprites/bookdead.png" onClick="toggleItem(event)" title="Book of the Dead">
-					<img id="fclothes" class="item" src="../sprites/fclothes.png" onClick="toggleItem(event)" title="Fairy Clothes">
-					<img id="scriptures" class="item" src="../sprites/scriptures.png" onClick="toggleItem(event)" title="Scriptures">
-					<img id="hboots" class="item" src="../sprites/hboots.png" onClick="toggleItem(event)" title="Hermes' Boots">
-					<img id="edenfruit" class="item" src="../sprites/edenfruit.png" onClick="toggleItem(event)" title="Fruit of Eden">
-					<img id="twinstatue" class="item" src="../sprites/twinstatue.png" onClick="toggleItem(event)" title="Twin Statue">
-					<img id="bracelet" class="item" src="../sprites/bracelet.png" onClick="toggleItem(event)" title="Bracelet">
-					<img id="perfume" class="item" src="../sprites/perfume.png" onClick="toggleItem(event)" title="Perfume">
-					<img id="spaulder" class="item" src="../sprites/spaulder.png" onClick="toggleItem(event)" title="Spaulder">
-					<img id="dimenkey" class="item" src="../sprites/dimenkey.png" onClick="toggleItem(event)" title="Dimensional Key">
-					<img id="icecape" class="item" src="../sprites/icecape.png" onClick="toggleItem(event)" title="Ice Cape">
+		<div class="pane_collection">
+			<div class="pane bottom-pane">
+				<h2 class="segment_title">CHECKS REMAINING</h2>
+				<div id="check_counters" class="segment_content">
+					<div class="pane vertical">
+						<img class="check_count_header" src="../fields/SRFC.png" alt="Surface checks" />
+						<div id="srfcChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="SRFC"><img id="srfcImage"
+								class="item" src="../sprites/chest.png">
+							<div class="overlay" id="srfcCounter">16</div>
+						</div>
+						<div id="srfcDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Ankh Jewels"><img id="ankhImage"
+								class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="sc">7</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="segment software">
-				<h2 class="segment_title">SOFTWARE</h2>
-				<div class="segment_content">
-					<img id="reader" class="item" src="../sprites/reader.png" onClick="toggleItem(event)" title="reader.exe">
-					<img id="yagomap" class="item" src="../sprites/yagomap.png" onClick="toggleItem(event)" title="yagomap.exe">
-					<img id="yagostr" class="item" src="../sprites/yagostr.png" onClick="toggleItem(event)" title="yagostr.exe">
-					<img id="torude" class="item" src="../sprites/torude.png" onClick="toggleItem(event)" title="torude.exe">
-					<img id="mantra" class="item" src="../sprites/mantra.png" onClick="toggleItem(event)" title="mantra.exe">
-					<img id="mekuri" class="item" src="../sprites/mekuri.png" onClick="toggleItem(event)" title="mekuri.exe">
-					<img id="miracle" class="item" src="../sprites/miracle.png" onClick="toggleItem(event)" title="miracle.exe">
-					<img id="mirai" class="item" src="../sprites/mirai.png" onClick="toggleItem(event)" title="mirai.exe">
-					<div></div>
-					<img id="keyfairy" class="item" src="../sprites/keyfairy.png" title="Consistent Key Fairy Access">
-				</div>
-			</div>
-		</div>
-		<div class="pane vertical">
-			<div class="segment seals">
-				<h2 class="segment_title">SEAL</h2>
-				<div class="segment_content">
-					<img id="sealorigin" class="item" src="../sprites/sealorigin.png" onClick="toggleItem(event)" title="Origin Seal">
-					<img id="sealbirth" class="item" src="../sprites/sealbirth.png" onClick="toggleItem(event)" title="Birth Seal">
-					<img id="seallife" class="item" src="../sprites/seallife.png" onClick="toggleItem(event)" title="Life Seal">
-					<img id="sealdeath" class="item" src="../sprites/sealdeath.png" onClick="toggleItem(event)" title="Death Seal">
-				</div>
-			</div>
-			<div class="segment collectables">
-				<h2 class="segment_title">COLL</h2>
-				<div class="segment_content">
-					<div id="map" class="container" onClick="incCounter(event)" oncontextmenu="decCounter(event); return false;" title="Maps"><img id="mapImage" class="item" src="../sprites/map.png"><div class="overlay" id="mapCounter">0</div></div>
-					<div id="ankh" class="container" onClick="incCounter(event)" oncontextmenu="decCounter(event); return false;" title="Ankh Jewels"><img id="ankhImage" class="item" src="../sprites/ankh.png"><div class="overlay" id="ankhCounter">0</div></div>
-					<div id="orb" class="container" onClick="incCounter(event)" oncontextmenu="decCounter(event); return false;" title="Sacred Orbs"><img id="orbImage" class="item" src="../sprites/orb.png"><div class="overlay" id="orbCounter">0</div></div>
-				</div>
-			</div>
-		</div>
-		<div class="pane vertical">
-			<h2 class="segment_title">BOSS</h2>
-			<div class="segment_content">
-				<img id="amphisbaena" class="item" src="../sprites/Amphi.png" onClick="toggleItem(event)" title="Amphisbaena">
-				<img id="sakit" class="item" src="../sprites/Sakit.png" onClick="toggleItem(event)" title="Sakit">
-				<img id="ellmac" class="item" src="../sprites/ellmac.png" onClick="toggleItem(event)" title="Ellmac">
-				<img id="bahamut" class="item" src="../sprites/bahamut.png" onClick="toggleItem(event)" title="Bahamut">
-				<img id="viy" class="item" src="../sprites/Viy.png" onClick="toggleItem(event)" title="Viy">
-				<img id="palenque" class="item" src="../sprites/Palenque.png" onClick="toggleItem(event)" title="Palenque">
-				<img id="baphomet" class="item" src="../sprites/baphomet.png" onClick="toggleItem(event)" title="Baphomet">
-				<img id="tiamat" class="item" src="../sprites/tiamat.png" onClick="toggleItem(event)" title="Tiamat">
 			</div>
 		</div>
 	</div>
-	<br/>
+	<br />
 	<button class="danger" onClick="resetTracker(event)" type="button">Reset tracked items</button>
-	<br/>
+	<br />
 	<div class="display-controls" id="controls-pane">
 		<div class="display-control-row">
-			<label for="bgcolor">Change BG Color:</label><input type="color" id="bgcolor" value="#333333" onchange="changeBG()">
+			<label for="bgcolor">Change BG Color:</label><input type="color" id="bgcolor" value="#333333"
+				onchange="changeBG()">
 		</div>
 		<div class="display-control-row">
-			<label for="txtcolor">Change Text Color:</label><input type="color" id="txtcolor" value="#333333" onchange="changeText()">
+			<label for="txtcolor">Change Text Color:</label><input type="color" id="txtcolor" value="#333333"
+				onchange="changeText()">
 		</div>
 		<div class="display-control-row">
-			<label for="trackerborder">Display Tracker Border:</label><input type="checkbox" id="trackerborder" checked onchange="toggleBorder()">
+			<label for="trackerborder">Display Tracker Border:</label><input type="checkbox" id="trackerborder" checked
+				onchange="toggleBorder()">
 		</div>
 	</div>
-	<br/>
+	<br />
 	<button onClick="info()" type="button">info</button>
 	<div id="info" class="info">
-		<a href="https://github.com/nihonjinrxs/la-mulana-web-tracker" target="_blank">Click here for readme and source</a>
+		<a href="https://github.com/nihonjinrxs/la-mulana-web-tracker" target="_blank">Click here for readme and
+			source</a>
 		<p>Notes for the user:</p>
 		<ul>
 			<li><strong>Optimal Capture Dimensions are 385px high x 500px wide</strong></li>
 			<li>The map in the first row of ITEMS is the Shrine of the Mother Map.</li>
-			<li>Key Fairy Access (SOFTWARE) is an automatic tracker which will light up when the conditions are met.<br/>
+			<li>Key Fairy Access (SOFTWARE) is an automatic tracker which will light up when the conditions are
+				met.<br />
 				Requirements are: Isis Pendant (ITEMS), miracle.exe and mekuri.exe (SOFTWARE)</li>
-			<li>Bone Wall Removal (ITEMS) is an automatic tracker which will light up when the conditions are met.<br/>
+			<li>Bone Wall Removal (ITEMS) is an automatic tracker which will light up when the conditions are met.<br />
 				Bone Walls can be removed by one of the following:
 				<ul>
-					<li>collecting the Dragon Bone (USABLE ITEMS), yagomap.exe and yagostr.exe (SOFTWARE), and the Shrine of the Mother Map (ITEMS)</li>
+					<li>collecting the Dragon Bone (USABLE ITEMS), yagomap.exe and yagostr.exe (SOFTWARE), and the
+						Shrine of the Mother Map (ITEMS)</li>
 					<li>defeating all 8 Guardians</li>
 				</ul>
 			</li>
-			<li>Progressive and counted items can be stepped back by right clicking. These items will also cycle forward to starting state.<br/>
+			<li>Progressive and counted items can be stepped back by right clicking. These items will also cycle forward
+				to starting state.<br />
 				Progressive items include:
 				<ul>
 					<li>Whips (MAIN WEAPON)</li>
@@ -200,4 +322,5 @@
 		</ul>
 	</div>
 </body>
+
 </html>

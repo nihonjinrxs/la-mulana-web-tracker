@@ -1,4 +1,4 @@
-const fields = [
+const fieldImages = [
     '../fields/SRFC.png',
     '../fields/GUID.png',
     '../fields/ILSN.png',
@@ -19,6 +19,27 @@ const fields = [
     '../fields/MOM+.png',
     '../fields/HELL.png',
 ]
+const fields = [
+    { key: "srfc", image: "../fields/SRFC.png", checks: 13, doors: 7, shops: 3, philosopher: false, name: "Surface" },
+    { key: "guid", image: "../fields/GUID.png", checks: 10, doors: 2, shops: 1, philosopher: false, name: "Gate of Guidance" },
+    { key: "ilsn", image: "../fields/ILSN.png", checks: 10, doors: 4, shops: 1, philosopher: false, name: "Gate of Illusion" },
+    { key: "maus", image: "../fields/MAUS.png", checks:  5, doors: 2, shops: 1, philosopher: false, name: "Mausoleum of Giants" },
+    { key: "gryd", image: "../fields/GRYD.png", checks:  8, doors: 2, shops: 1, philosopher: false, name: "Graveyard of Giants" },
+    { key: "sun",  image: "../fields/SUN.png",  checks:  9, doors: 5, shops: 3, philosopher: false, name: "Temple of the Sun" },
+    { key: "moon", image: "../fields/MOON.png", checks:  7, doors: 3, shops: 1, philosopher: true,  name: "Temple of Moonlight" },
+    { key: "sprg", image: "../fields/SPRG.png", checks:  8, doors: 4, shops: 2, philosopher: true,  name: "Spring in the Sky" },
+    { key: "gdss", image: "../fields/GDSS.png", checks:  7, doors: 3, shops: 1, philosopher: false, name: "Tower of the Goddess" },
+    { key: "infr", image: "../fields/INFR.png", checks:  8, doors: 3, shops: 1, philosopher: false, name: "Inferno Cavern" },
+    { key: "ruin", image: "../fields/RUIN.png", checks:  6, doors: 2, shops: 1, philosopher: false, name: "Tower of Ruin" },
+    { key: "extn", image: "../fields/EXTN.png", checks:  6, doors: 3, shops: 1, philosopher: false, name: "Chamber of Extinction" },
+    { key: "time", image: "../fields/TIME.png", checks:  1, doors: 0, shops: 0, philosopher: false, name: "Gate of Time" },
+    { key: "brth", image: "../fields/BRTH.png", checks:  9, doors: 2, shops: 1, philosopher: false, name: "Chamber of Birth" },
+    { key: "twin", image: "../fields/TWIN.png", checks:  9, doors: 5, shops: 4, philosopher: false, name: "Twin Labyrinths" },
+    { key: "endl", image: "../fields/ENDL.png", checks:  4, doors: 2, shops: 1, philosopher: false, name: "Endless Corridor" },
+    { key: "dmns", image: "../fields/DMNS.png", checks:  7, doors: 1, shops: 0, philosopher: false, name: "Dimensional Corridor" },
+    { key: "mom",  image: "../fields/MOM.png",  checks:  7, doors: 0, shops: 0, philosopher: false, name: "Shrine of the Mother" },
+]
+
 window.trackerChecks = [
     { key: "whip", steps: ["../sprites/whip1.png", "../sprites/whip2.png", "../sprites/whip3.png"], type: "step", title: "Whip" },
     { key: "knife", image: "../sprites/knife.png", type: "toggle", title: "Knife" },
@@ -102,11 +123,37 @@ window.trackerChecks = [
     { key: "palenque", image: "../sprites/Palenque.png", type: "toggle", title: "Palenque" },
     { key: "baphomet", image: "../sprites/baphomet.png", type: "toggle", title: "Baphomet" },
     { key: "tiamat", image: "../sprites/tiamat.png", type: "toggle", title: "Tiamat" },
-    { key: "cursed1", steps: fields, type: "step", title: "Cursed Chest 1" },
-    { key: "cursed2", steps: fields, type: "step", title: "Cursed Chest 2" },
-    { key: "cursed3", steps: fields, type: "step", title: "Cursed Chest 3" },
-    { key: "cursed4", steps: fields, type: "step", title: "Cursed Chest 4" },
+    { key: "cursed1", steps: fieldImages, type: "step", title: "Cursed Chest 1" },
+    { key: "cursed2", steps: fieldImages, type: "step", title: "Cursed Chest 2" },
+    { key: "cursed3", steps: fieldImages, type: "step", title: "Cursed Chest 3" },
+    { key: "cursed4", steps: fieldImages, type: "step", title: "Cursed Chest 4" },
 ];
+fields.forEach(field => {
+    window.trackerChecks.push({
+        key: `${field.key}Checks`,
+        image: "../sprites/chest.png",
+        type: "counter",
+        maxVal: field.checks,
+        direction: "decrement",
+        title: `${field.name} checks remaining`
+    });
+    window.trackerChecks.push({
+        key: `${field.key}Doors`,
+        image: "../sprites/doorway.png",
+        type: "counter",
+        maxVal: field.doors + field.shops,
+        direction: "decrement",
+        title: `${field.name} NPC doors and shops remaining`
+    });
+    if (field.philosopher) {
+        window.trackerChecks.push({
+            key: `${field.key}Philosopher`,
+            image: "../sprites/philosopher.png",
+            type: "toggle",
+            title: `${field.name} philosopher awakened`
+        });
+    }
+})
 
 function initializeTrackerChecksFromLocalstorage() {
     trackerChecks.forEach((check) => {
@@ -118,7 +165,7 @@ function initializeTrackerChecksFromLocalstorage() {
                 trackerStorage.getOrInitializeStepItem(check.key, check.steps);
                 break;
             case "counter":
-                trackerStorage.getOrInitializeCounter(check.key, check.image, check.maxVal);
+                trackerStorage.getOrInitializeCounter(check.key, check.image, check.maxVal, check.direction === "decrement");
                 break;
         }
     });
