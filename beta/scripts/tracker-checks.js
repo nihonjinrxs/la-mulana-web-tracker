@@ -177,6 +177,9 @@ function initializeTrackerChecksFromLocalstorage() {
 const itemCheckCounters = trackerChecks.filter(check => check.isCheckCounter);
 const doorCheckCounters = trackerChecks.filter(check => check.isDoorCounter);
 
+window.checkCounterKeys = itemCheckCounters.map(check => check.key).concat(doorCheckCounters.map(check => check.key));
+console.log(window.checkCounterKeys);
+
 function resetTrackerChecks() {
     trackerChecks.forEach((check) => {
         trackerStorage.reset(check.key, check.type);
