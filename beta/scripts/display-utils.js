@@ -70,8 +70,18 @@ function updateTrackedCounterDisplay(el, currentState) {
     const counterEl = document.getElementById(`${el.id}Counter`);
 	const imageEl = document.getElementById(`${el.id}Image`);
     counterEl.innerHTML = currentState.value.toString();
-	counterEl.style.color = currentState.atMax ? "lime" : "#f1f1f1";
-    currentState.atMin ? fadeItem(imageEl) : unfadeItem(imageEl);
+	counterEl.style.color = currentState.complete ? "lime" : "#f1f1f1";
+	currentState.atMin ? fadeItem(imageEl) : unfadeItem(imageEl);
+	if (currentState.isCheckCounter || currentState.isDoorCounter) {
+		setChecksRemainingSummaryElement(calculateChecksRemaining(), calculateDoorsRemaining());
+	}
+}
+
+function setChecksRemainingSummaryElement(checksRemaining, doorsRemaining) {
+	const checksContent = `${checksRemaining}/${getTotalChecks()}`
+	const doorsContent = `${doorsRemaining}/${getTotalDoors()}`;
+	document.getElementById("checks_counter_summary").innerText = checksContent;
+	document.getElementById("doors_counter_summary").innerText = doorsContent;
 }
 
 function updateAllTrackerCheckDisplays(checks) {
@@ -89,7 +99,8 @@ function updateAllTrackerCheckDisplays(checks) {
 				updateTrackedCounterDisplay(el, currentValue);
 				break;
 		}
-	})
+	});
+	setChecksRemainingSummaryElement(calculateChecksRemaining(), calculateDoorsRemaining());
 }
 
 function fadeItem(el){

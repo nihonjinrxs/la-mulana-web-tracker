@@ -246,19 +246,312 @@
 		</div>
 		<div class="pane_collection">
 			<div class="pane bottom-pane">
-				<h2 class="segment_title">CHECKS REMAINING</h2>
+				<h2 class="segment_title">CHECKS REMAINING
+					<img class="checks_summary" src="../sprites/chest.png" title="Total Item Checks Remaining" />
+					<span id="checks_counter_summary"></span>
+					<img class="checks_summary" src="../sprites/doorway.png" title="Total Door Checks Remaining" />
+					<span id="doors_counter_summary"></span>
+				</h2>
 				<div id="check_counters" class="segment_content">
-					<div class="pane vertical">
-						<img class="check_count_header" src="../fields/SRFC.png" alt="Surface checks" />
-						<div id="srfcChecks" class="container" onClick="decCounter(event)"
-							oncontextmenu="incCounter(event); return false;" title="SRFC"><img id="srfcImage"
-								class="item" src="../sprites/chest.png">
-							<div class="overlay" id="srfcCounter">16</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/SRFC.png" alt="Surface checks remaining" />
 						</div>
-						<div id="srfcDoors" class="container" onClick="decCounter(event)"
-							oncontextmenu="incCounter(event); return false;" title="Ankh Jewels"><img id="ankhImage"
-								class="item" src="../sprites/doorway.png">
-							<div class="overlay" id="sc">7</div>
+						<div class="vertical">
+							<div id="srfcChecks" class="container" onClick="decCounter(event)"
+								oncontextmenu="incCounter(event); return false;" title="Surface chests and item checks">
+								<img id="srfcChecksImage" class="item" src="../sprites/chest.png">
+								<div class="overlay" id="srfcChecksCounter">9</div>
+							</div>
+							<div id="srfcDoors" class="container" onClick="decCounter(event)"
+								oncontextmenu="incCounter(event); return false;" title="Surface door checks">
+								<img id="srfcDoorsImage" class="item" src="../sprites/doorway.png">
+								<div class="overlay" id="srfcDoorsCounter">7</div>
+							</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/GUID.png" alt="Gate of Guidance checks" />
+						</div>
+						<div class="vertical">
+						<div id="guidChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Guidance chests and item checks">
+							<img id="guidChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="guidChecksCounter">11</div>
+						</div>
+						<div id="guidDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Guidance door checks">
+							<img id="guidDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="guidDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/ILSN.png" alt="Gate of Illusion checks" />
+						</div>
+						<div class="vertical">
+						<div id="ilsnChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Illusion chests and item checks">
+							<img id="ilsnChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="ilsnChecksCounter">7</div>
+						</div>
+						<div id="ilsnDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Illusion door checks">
+							<img id="ilsnDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="ilsnDoorsCounter">4</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/MAUS.png" alt="Mausoleum of Giants checks" />
+						</div>
+						<div class="vertical">
+						<div id="mausChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Mausoleum of Giants chests and item checks">
+							<img id="mausChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="mausChecksCounter">5</div>
+						</div>
+						<div id="mausDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Mausoleum of Giants door checks">
+							<img id="mausDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="mausDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/GRYD.png" alt="Graveyard of Giants checks" />
+						</div>
+						<div class="vertical">
+						<div id="grydChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Graveyard of Giants chests and item checks">
+							<img id="grydChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="grydChecksCounter">8</div>
+						</div>
+						<div id="grydDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Graveyard of Giants door checks">
+							<img id="grydDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="grydDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/SUN.png" alt="Temple of the Sun checks" />
+						</div>
+						<div class="vertical">
+						<div id="sunChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Temple of the Sun chests and item checks">
+							<img id="sunChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="sunChecksCounter">8</div>
+						</div>
+						<div id="sunDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Temple of the Sun door checks">
+							<img id="sunDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="sunDoorsCounter">5</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/MOON.png" alt="Temple of Moonlight checks" />
+						</div>
+						<div class="vertical">
+						<div id="moonChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Temple of Moonlight chests and item checks">
+							<img id="moonChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="moonChecksCounter">7</div>
+						</div>
+						<div id="moonDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Temple of Moonlight door checks">
+							<img id="moonDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="moonDoorsCounter">3</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/SPRG.png" alt="Spring in the Sky checks" />
+						</div>
+						<div class="vertical">
+						<div id="sprgChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Spring in the Sky chests and item checks">
+							<img id="sprgChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="sprgChecksCounter">8</div>
+						</div>
+						<div id="sprgDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Spring in the Sky door checks">
+							<img id="sprgDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="sprgDoorsCounter">4</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/GDSS.png" alt="Tower of the Goddess checks" />
+						</div>
+						<div class="vertical">
+						<div id="gdssChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Tower of the Goddess chests and item checks">
+							<img id="gdssChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="gdssChecksCounter">7</div>
+						</div>
+						<div id="gdssDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Tower of the Goddess door checks">
+							<img id="gdssDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="gdssDoorsCounter">3</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/INFR.png" alt="Inferno Cavern checks" />
+						</div>
+						<div class="vertical">
+						<div id="infrChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Inferno Cavern chests and item checks">
+							<img id="infrChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="infrChecksCounter">8</div>
+						</div>
+						<div id="infrDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Inferno Cavern door checks">
+							<img id="infrDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="infrDoorsCounter">3</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/RUIN.png" alt="Tower of Ruin checks" />
+						</div>
+						<div class="vertical">
+						<div id="ruinChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Tower of Ruin chests and item checks">
+							<img id="ruinChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="ruinChecksCounter">6</div>
+						</div>
+						<div id="ruinDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Tower of Ruin door checks">
+							<img id="ruinDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="ruinDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/EXTN.png" alt="Chamber of Extinction checks" />
+						</div>
+						<div class="vertical">
+						<div id="extnChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Chamber of Extinction chests and item checks">
+							<img id="extnChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="extnChecksCounter">6</div>
+						</div>
+						<div id="extnDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Chamber of Extinction door checks">
+							<img id="extnDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="extnDoorsCounter">3</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/TIME.png" alt="Gate of Time checks" />
+						</div>
+						<div class="vertical">
+						<div id="timeChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Time chests and item checks">
+							<img id="timeChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="timeChecksCounter">1</div>
+						</div>
+						<div id="timeDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Gate of Time door checks">
+							<img id="timeDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="timeDoorsCounter">1</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/BRTH.png" alt="Chamber of Birth checks" />
+						</div>
+						<div class="vertical">
+						<div id="brthChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Chamber of Birth chests and item checks">
+							<img id="brthChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="brthChecksCounter">9</div>
+						</div>
+						<div id="brthDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Chamber of Birth door checks">
+							<img id="brthDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="brthDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/TWIN.png" alt="Twin Labyrinths checks" />
+						</div>
+						<div class="vertical">
+						<div id="twinChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Twin Labyrinths chests and item checks">
+							<img id="twinChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="twinChecksCounter">9</div>
+						</div>
+						<div id="twinDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Twin Labyrinths door checks">
+							<img id="twinDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="twinDoorsCounter">5</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/DMNS.png" alt="Dimensional Corridor checks" />
+						</div>
+						<div class="vertical">
+						<div id="dmnsChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Dimensional Corridor chests and item checks">
+							<img id="dmnsChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="dmnsChecksCounter">7</div>
+						</div>
+						<div id="dmnsDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Dimensional Corridor door checks">
+							<img id="dmnsDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="dmnsDoorsCounter">1</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/ENDL.png" alt="Endless Corridor checks" />
+						</div>
+						<div class="vertical">
+						<div id="endlChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Endless Corridor chests and item checks">
+							<img id="endlChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="endlChecksCounter">4</div>
+						</div>
+						<div id="endlDoors" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Endless Corridor door checks">
+							<img id="endlDoorsImage" class="item" src="../sprites/doorway.png">
+							<div class="overlay" id="endlDoorsCounter">2</div>
+						</div>
+						</div>
+					</div>
+					<div class="checks_segment">
+						<div class="check_count_header_container">
+							<img class="check_count_header" src="../fields/MOM.png" alt="Shrine of the Mother checks" />
+						</div>
+						<div class="vertical">
+						<div id="momChecks" class="container" onClick="decCounter(event)"
+							oncontextmenu="incCounter(event); return false;" title="Shrine of the Mother chests and item checks">
+							<img id="momChecksImage" class="item" src="../sprites/chest.png">
+							<div class="overlay" id="momChecksCounter">7</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -317,6 +610,11 @@
 					<li>Maps (0 to 17)</li>
 					<li>Ankh Jewels (0 to 9)</li>
 					<li>Sacred Orbs (0 to 10)</li>
+				</ul>
+				Checks remaining include each field with checks. These are divided per field into the following:
+				<ul>
+					<li>Chest icon (counter to 0): All item checks in normal rooms of the field, usually chests or puzzle/boss items, not including those behind doors</li>
+					<li>Door icon (counter to 0): All NPC doors, including shops and philosophers, in the field</li>
 				</ul>
 			</li>
 		</ul>

@@ -25,6 +25,7 @@ const trackerStorage = {
     getOrInitializeToggleItem(key, image) {
         const existing = this.getItem(key, 'toggle');
         if (!existing) { this.trackToggleItem(key, image); }
+        return this.getItem(key, 'toggle');
     },
     toggle: function(key) {
         const tracked = this.getItem(key, 'toggle');
@@ -43,6 +44,7 @@ const trackerStorage = {
     getOrInitializeStepItem(key, steps) {
         const existing = this.getItem(key, 'step');
         if (!existing) { this.trackStepItem(key, steps); }
+        return this.getItem(key, 'step');
     },
     stepUp: function(key) {
         const tracked = this.getItem(key, 'step');
@@ -57,13 +59,15 @@ const trackerStorage = {
         return tracked;
     },
     trackCounter: function(key, image, maxVal, decrement) {
+        const decrementing = decrement || false;
         const tracked = {
             type: 'counter',
-            value: decrement ? maxVal : 0,
+            value: decrementing ? maxVal : 0,
             max: maxVal,
             atMin: true,
             atMax: false,
-            decrement: decrement || false,
+            complete: false,
+            decrement: decrementing,
             image,
         };
         this.setItem(key, 'counter', tracked);
@@ -71,12 +75,14 @@ const trackerStorage = {
     getOrInitializeCounter(key, image, maxVal, decrement) {
         const existing = this.getItem(key, 'counter');
         if (!existing) { this.trackCounter(key, image, maxVal, decrement); }
+        return this.getItem(key, 'counter');
     },
     increment: function(key) {
         const tracked = this.getItem(key, 'counter');
         tracked.value = incrementCyclicCounter(tracked.value, tracked.max);
         tracked.atMin = tracked.value === 0;
         tracked.atMax = tracked.value === tracked.max;
+        tracked.complete = tracked.value === (tracked.decrement ? 0 : tracked.max);
         this.setItem(key, 'counter', tracked);
         return tracked;
     },
@@ -85,6 +91,7 @@ const trackerStorage = {
         tracked.value = decrementCyclicCounter(tracked.value, tracked.max);
         tracked.atMin = tracked.value === 0;
         tracked.atMax = tracked.value === tracked.max;
+        tracked.complete = tracked.value === (tracked.decrement ? 0 : tracked.max);
         this.setItem(key, 'counter', tracked);
         return tracked;
     },
