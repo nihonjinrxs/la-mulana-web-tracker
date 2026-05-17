@@ -53,7 +53,9 @@ function unStepItem(e){
 function incCounter(e){
     e.preventDefault();
 	const el = e.target;
+    console.log(el.id);
     const counterKey = el.id.replace(/Image$/, '').replace(/Counter$/, '');
+    console.log(counterKey);
     trackerStorage.increment(counterKey);
     return false;
 }

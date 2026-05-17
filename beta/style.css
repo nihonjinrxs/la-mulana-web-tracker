@@ -58,6 +58,7 @@ img{
 	text-align: center;
 	vertical-align: bottom;
 	height: 30px;
+	width: 70px;
 	overflow: hidden;
 	cursor: default;
 }
@@ -90,15 +91,20 @@ img{
 .tracker {
 	display: grid;
 	align-items: start;
-	grid-auto-flow: column;
+	grid-auto-flow: row;
 	min-width: 500px;
 	max-width: 500px;
 	min-height: 350px;
-	max-height: 390px;
+	max-height: 550px;
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-bottom: 10px;
 	border: 2px solid darkred;
+}
+.pane_collection {
+	display: grid;
+	align-items: start;
+	grid-auto-flow: column;
 }
 .pane {
 	display: grid;
@@ -112,6 +118,9 @@ img{
 .vertical.pane {
 	min-width: 30px;
 	max-width: 40px;
+}
+.pane.bottom-pane {
+	max-width: 100%;
 }
 .segment {
 	display: grid;
@@ -135,19 +144,67 @@ img{
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	/* border: 1px solid lightseagreen; */
 }
+.segment_content>div.checks_segment {
+	display: grid;
+	align-items: start;
+	grid-auto-flow: row;
+	grid-template-columns: 1fr 3fr 3fr;
+	width: 60px;
+	/* border: 1px solid lightseagreen; */
+}
 .vertical .segment_content {
 	display: grid;
 	grid-auto-flow: row;
 	grid-template-columns: 1fr;
 	/* border: 1px solid lightseagreen; */
 }
+.bottom-pane .segment_content {
+	padding-top: 0px;
+	max-height: 110px;
+	height: 110px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	/* border: 1px solid lightseagreen; */
+}
+.bottom-pane .segment_content .item {
+	height: 15px;
+	width: 15px;
+}
+.bottom-pane .segment_content .container {
+	height: 15px;
+	width: 15px;
+}
+.bottom-pane .segment_content .overlay {
+	height: 15px;
+	width: 45px;
+	font-size: 14px;
+}
 .segment_content>img, .segment_content>div {
 	height: 30px;
 	width: 30px;
 	margin: 5px;
 }
+.check_count_header {
+	/* clip-path: rect(8px auto 22px auto); */
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+}
+.checks_segment>div.check_count_header_container {
+	width: 30px;
+	height: 14px;
+	rotate: 270deg;
+	overflow-x: hidden;
+	margin: 8px 0 0 -8px;
+}
 .vertical .segment_content>img {
 	height: 28px;
 	width: 28px;
 	margin: 5px;
+}
+img.checks_summary {
+	height: 15px;
+	width: 15px;
+	alignment-baseline: baseline;
+	padding-left: 8px;
+	display: inline;
 }

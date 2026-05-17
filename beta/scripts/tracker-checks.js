@@ -1,4 +1,4 @@
-const fields = [
+const fieldImages = [
     '../fields/SRFC.png',
     '../fields/GUID.png',
     '../fields/ILSN.png',
@@ -19,6 +19,32 @@ const fields = [
     '../fields/MOM+.png',
     '../fields/HELL.png',
 ]
+const fields = [
+    { key: "srfc", image: "../fields/SRFC.png", checks:  9, doors: 7, name: "Surface" },
+    { key: "guid", image: "../fields/GUID.png", checks: 11, doors: 2, name: "Gate of Guidance" },
+    { key: "ilsn", image: "../fields/ILSN.png", checks:  7, doors: 4, name: "Gate of Illusion" },
+    { key: "maus", image: "../fields/MAUS.png", checks:  5, doors: 2, name: "Mausoleum of Giants" },
+    { key: "gryd", image: "../fields/GRYD.png", checks:  8, doors: 2, name: "Graveyard of Giants" },
+    { key: "sun",  image: "../fields/SUN.png",  checks:  8, doors: 5, name: "Temple of the Sun" },
+    { key: "moon", image: "../fields/MOON.png", checks:  7, doors: 3, name: "Temple of Moonlight" },
+    { key: "sprg", image: "../fields/SPRG.png", checks:  8, doors: 4, name: "Spring in the Sky" },
+    { key: "gdss", image: "../fields/GDSS.png", checks:  7, doors: 3, name: "Tower of the Goddess" },
+    { key: "infr", image: "../fields/INFR.png", checks:  8, doors: 3, name: "Inferno Cavern" },
+    { key: "ruin", image: "../fields/RUIN.png", checks:  6, doors: 2, name: "Tower of Ruin" },
+    { key: "extn", image: "../fields/EXTN.png", checks:  6, doors: 3, name: "Chamber of Extinction" },
+    { key: "time", image: "../fields/TIME.png", checks:  1, doors: 1, name: "Gate of Time" },
+    { key: "brth", image: "../fields/BRTH.png", checks:  9, doors: 2, name: "Chamber of Birth" },
+    { key: "twin", image: "../fields/TWIN.png", checks:  9, doors: 5, name: "Twin Labyrinths" },
+    { key: "dmns", image: "../fields/DMNS.png", checks:  7, doors: 1, name: "Dimensional Corridor" },
+    { key: "endl", image: "../fields/ENDL.png", checks:  4, doors: 2, name: "Endless Corridor" },
+    { key: "mom",  image: "../fields/MOM.png",  checks:  7, doors: 0, name: "Shrine of the Mother" },
+]
+const fieldTotals = {checks: 0, doors: 0}
+for (field of fields) {
+    fieldTotals.checks += field.checks;
+    fieldTotals.doors += field.doors;
+}
+
 window.trackerChecks = [
     { key: "whip", steps: ["../sprites/whip1.png", "../sprites/whip2.png", "../sprites/whip3.png"], type: "step", title: "Whip" },
     { key: "knife", image: "../sprites/knife.png", type: "toggle", title: "Knife" },
@@ -102,11 +128,35 @@ window.trackerChecks = [
     { key: "palenque", image: "../sprites/Palenque.png", type: "toggle", title: "Palenque" },
     { key: "baphomet", image: "../sprites/baphomet.png", type: "toggle", title: "Baphomet" },
     { key: "tiamat", image: "../sprites/tiamat.png", type: "toggle", title: "Tiamat" },
-    { key: "cursed1", steps: fields, type: "step", title: "Cursed Chest 1" },
-    { key: "cursed2", steps: fields, type: "step", title: "Cursed Chest 2" },
-    { key: "cursed3", steps: fields, type: "step", title: "Cursed Chest 3" },
-    { key: "cursed4", steps: fields, type: "step", title: "Cursed Chest 4" },
+    { key: "cursed1", steps: fieldImages, type: "step", title: "Cursed Chest 1" },
+    { key: "cursed2", steps: fieldImages, type: "step", title: "Cursed Chest 2" },
+    { key: "cursed3", steps: fieldImages, type: "step", title: "Cursed Chest 3" },
+    { key: "cursed4", steps: fieldImages, type: "step", title: "Cursed Chest 4" },
 ];
+fields.forEach(field => {
+    if (field.checks > 0) {
+        window.trackerChecks.push({
+            key: `${field.key}Checks`,
+            image: "../sprites/chest.png",
+            type: "counter",
+            maxVal: field.checks,
+            direction: "decrement",
+            isCheckCounter: true,
+            title: `${field.name} checks remaining`
+        });
+    }
+    if (field.doors > 0) {
+        window.trackerChecks.push({
+            key: `${field.key}Doors`,
+            image: "../sprites/doorway.png",
+            type: "counter",
+            maxVal: field.doors,
+            direction: "decrement",
+            isDoorCounter: true,
+            title: `${field.name} NPC doors and shops remaining`
+        });
+    }
+});
 
 function initializeTrackerChecksFromLocalstorage() {
     trackerChecks.forEach((check) => {
@@ -118,16 +168,42 @@ function initializeTrackerChecksFromLocalstorage() {
                 trackerStorage.getOrInitializeStepItem(check.key, check.steps);
                 break;
             case "counter":
-                trackerStorage.getOrInitializeCounter(check.key, check.image, check.maxVal);
+                trackerStorage.getOrInitializeCounter(check.key, check.image, check.maxVal, check.direction === "decrement");
                 break;
         }
     });
 }
 
+const itemCheckCounters = trackerChecks.filter(check => check.isCheckCounter);
+const doorCheckCounters = trackerChecks.filter(check => check.isDoorCounter);
+
+window.checkCounterKeys = itemCheckCounters.map(check => check.key).concat(doorCheckCounters.map(check => check.key));
+console.log(window.checkCounterKeys);
+
 function resetTrackerChecks() {
     trackerChecks.forEach((check) => {
         trackerStorage.reset(check.key, check.type);
     });
+}
+
+function calculateChecksRemaining() {
+    return itemCheckCounters.reduce((total, check) => {
+        return total + trackerStorage.getOrInitializeCounter(check.key, check.type, check.maxVal, check.direction === "decrement").value;
+    }, 0);
+}
+
+function calculateDoorsRemaining() {
+    return doorCheckCounters.reduce((total, check) => {
+        return total + trackerStorage.getOrInitializeCounter(check.key, check.type, check.maxVal, check.direction === "decrement").value;
+    }, 0);
+}
+
+function getTotalChecks() {
+    return fieldTotals.checks;
+}
+
+function getTotalDoors() {
+    return fieldTotals.doors;
 }
 
 const keyFairyChecks = [
