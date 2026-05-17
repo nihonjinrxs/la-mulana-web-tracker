@@ -64,9 +64,6 @@ const trackerStorage = {
             type: 'counter',
             value: decrementing ? maxVal : 0,
             max: maxVal,
-            atMin: true,
-            atMax: false,
-            complete: false,
             decrement: decrementing,
             image,
         };
@@ -80,20 +77,33 @@ const trackerStorage = {
     increment: function(key) {
         const tracked = this.getItem(key, 'counter');
         tracked.value = incrementCyclicCounter(tracked.value, tracked.max);
-        tracked.atMin = tracked.value === 0;
-        tracked.atMax = tracked.value === tracked.max;
-        tracked.complete = tracked.value === (tracked.decrement ? 0 : tracked.max);
         this.setItem(key, 'counter', tracked);
         return tracked;
     },
     decrement: function(key) {
         const tracked = this.getItem(key, 'counter');
         tracked.value = decrementCyclicCounter(tracked.value, tracked.max);
-        tracked.atMin = tracked.value === 0;
-        tracked.atMax = tracked.value === tracked.max;
-        tracked.complete = tracked.value === (tracked.decrement ? 0 : tracked.max);
         this.setItem(key, 'counter', tracked);
         return tracked;
+    },
+    atMin: function(key) {
+        const tracked = this.getItem(key, 'counter');
+        return tracked.value === 0;
+    },
+    atMax: function(key) {
+        const tracked = this.getItem(key, 'counter');
+        return tracked.value === tracked.max;
+    },
+    complete: function(key, type) {
+        const tracked = this.getItem(key, type);
+        switch (type) {
+            case "counter":
+                return tracked.value === (tracked.decrement ? 0 : tracked.max);
+            case "step":
+                return tracked.value === tracked.steps;
+            case "toggle":
+                return value;
+        }
     },
     getOrInitializePreference: function(key, defaultValue) {
         const existing = this.getItem(key, 'pref');

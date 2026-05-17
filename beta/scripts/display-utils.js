@@ -70,8 +70,8 @@ function updateTrackedCounterDisplay(el, currentState) {
     const counterEl = document.getElementById(`${el.id}Counter`);
 	const imageEl = document.getElementById(`${el.id}Image`);
     counterEl.innerHTML = currentState.value.toString();
-	counterEl.style.color = currentState.complete ? "lime" : "#f1f1f1";
-	currentState.atMin ? fadeItem(imageEl) : unfadeItem(imageEl);
+	counterEl.style.color = trackerStorage.complete(el.id, 'counter') ? "lime" : "#f1f1f1";
+	trackerStorage.atMin(el.id) ? fadeItem(imageEl) : unfadeItem(imageEl);
 	if (currentState.isCheckCounter || currentState.isDoorCounter) {
 		setChecksRemainingSummaryElement(calculateChecksRemaining(), calculateDoorsRemaining());
 	}
